@@ -1,24 +1,52 @@
-const bugsList = [{
-    "id": "377d5775-529d-40a4-bca0-3f67495c27f8",
-    "name": "b",
-    "environement": "frontend",
-    "description": "test de bug",
-    "priority": "1",
-    "date": "24/10/2022 17:12:38"
+const bugsList = [
+    {
+        "id": "1232ffd2-a39a-495a-afdd-2995021cf72d",
+        "name": "Bug de son",
+        "environement": "frontend",
+        "description": "Plus de son",
+        "priority": "2",
+        "date": "25/10/2022 16:16:58"
+    },
+    {
+        "id": "d8df3408-4fab-43d1-be4b-ba47477041bb",
+        "name": "Bug d affichage",
+        "environement": "frontend",
+        "description": "plus d ",
+        "priority": "3",
+        "date": "25/10/2022 16:17:27"
+    },
+    {
+        "id": "4e3eae5f-9d4a-4597-86dc-296cb9ae4aec",
+        "name": "Connection a la BDD",
+        "environement": "backend",
+        "description": "BDD HS",
+        "priority": "5",
+        "date": "25/10/2022 16:18:20"
+    },
+    {
+        "id": "a7104fb3-2c7d-49b6-86b4-1268ba4c6a89",
+        "name": "Bug d API",
+        "environement": "backend",
+        "description": "L'api retourne un erreur",
+        "priority": "4",
+        "date": "25/10/2022 16:18:54"
+    },
+    {
+        "id": "ccd91ccf-e1b7-4bb9-8901-7ee41cf4c7ea",
+        "name": "Bug de cerveau",
+        "environement": "frontend",
+        "description": "Changer le liquide céphalo rachidien",
+        "priority": "1",
+        "date": "25/10/2022 16:19:43"
     }
 ]
 
-const archivedList = [{
-    "id": "test",
-    "name": "test",
-    "environement": "frontend",
-    "description": "test de bug",
-    "priority": "1",
-    "date": "24/10/2022 17:12:38"
-    }
-]
+const archivedList = []
 
 //Formulaire de creation de bug
+const inputs = document.querySelectorAll('input')
+inputs.forEach(input => input.addEventListener('focus', (e) => e.target.setAttribute('placeholder', '')))
+inputs.forEach(input => input.addEventListener('focusout', (e) => e.target.setAttribute('placeholder', e.target.getAttribute('name'))))
 const form = document.querySelector('form')
 form.addEventListener('submit', handleForm)
 function handleForm(e) {
@@ -41,6 +69,7 @@ function createBug(name, description, environement, priority) {
 //affichage de la liste de bug
 const displayBugs = document.querySelector('#rows')
 function displayBugsList() {
+    console.log(bugsList)
     displayBugs.innerHTML = ''
     for (let bug of bugsList) {
         displayBugs.innerHTML += `
@@ -55,7 +84,6 @@ function displayBugsList() {
                 <div class='edit-bug' id=${bug.id} title='edit' alt='edit'>✏️</div>
                 <div class='archive-bug' id=${bug.id} title='archive' alt='archive'>📁</div>
                 <div class='delete-bug' id=${bug.id} title='delete' alt='delete'>❌</div>
-            
             </div>
         </div>
         `
@@ -80,16 +108,14 @@ function displayBugsList() {
             <p>${bug.priority}</p>
             <div class="btn-crud-container">
                 <div class='unarchive-bug' id=${bug.id} alt='Unarchive'>📁</div>
-                <div class='delete-bug' id=${bug.id} alt='delete'>❌</div>
+                <div class='delete-archive-bug' id=${bug.id} alt='delete'>❌</div>
             
             </div>
         </div>
         `
-        // const allEditBtn = document.querySelectorAll('.edit-bug')
-        // allEditBtn.forEach(btn => btn.addEventListener('click', handleEdit))
         const allArchiveBtn = document.querySelectorAll('.unarchive-bug')
         allArchiveBtn.forEach(btn => btn.addEventListener('click', handleUnarchive))
-        const allRemoveBtn = document.querySelectorAll('.delete-bug')
+        const allRemoveBtn = document.querySelectorAll('.delete-archive-bug')
         allRemoveBtn.forEach(btn => btn.addEventListener('click', handleRemoveArchive))
     }
 } 
@@ -177,8 +203,9 @@ function sortBugs(type) {
         toggleSort = false
         btnsArray.find(btn => btn.getAttribute('data-attr') === type).textContent += '▾'
     }
-    console.log([...sortBtns].find(btn => btn.getAttribute('data-attr') === type));
     displayBugsList()
 }
 
 displayBugsList()
+
+document.querySelectorAll('')
