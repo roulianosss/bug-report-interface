@@ -122,7 +122,6 @@ function displayBugsList() {
 //fonction edition
 const editOverlay = document.querySelector('#overlay')
 function handleEdit(e) {
-    
     editOverlay.style.visibility = 'visible'
     const editIndex = bugsList.findIndex(bug => bug.id === e.target.getAttribute('id'))
     editOverlay.innerHTML = `
@@ -164,7 +163,6 @@ function handleArchive(e) {
     bugsList.splice(archiveIndex, 1)
     displayBugsList()
 }
-
 //function unarchive
 function handleUnarchive(e) {
     const archiveIndex = archivedList.findIndex(bug => bug.id === e.target.getAttribute('id'))
@@ -172,8 +170,6 @@ function handleUnarchive(e) {
     archivedList.splice(archiveIndex, 1)
     displayBugsList()
 }
-
-
 //fonction de gestion de la suppression
 function handleRemove(e) {
     const removeIndex = bugsList.findIndex(bug => bug.id === e.target.getAttribute('id'))
@@ -205,7 +201,4 @@ function sortBugs(type) {
     }
     displayBugsList()
 }
-
 displayBugsList()
-
-document.querySelectorAll('')
