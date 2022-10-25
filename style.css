@@ -10,14 +10,24 @@ body {
 }
 
 #overlay {
-    display: none;
+    visibility: hidden;
     overflow: hidden;
     position: absolute;
+    z-index: 10;
     right: 0;
     top: 0;
     width: 100vw;
     height: 100vh;
-    background-color: rgba(0, 0, 0, 0.578);
+    background-color: rgba(0, 0, 0, 0.486);
+    display: flex;
+    align-items: center;
+    
+}
+
+#overlay form {
+    background-color: rgb(250, 235, 215);
+    border-radius: 15px;
+    opacity: 1;
 }
 
 h1 {
@@ -39,7 +49,6 @@ menu {
     display: grid;
     align-items: center;
     justify-content: space-around;
-    border: 1px solid #fff;
     background-color: rgb(250, 235, 215, 0.5);
     height: 50px;
     width: 90%;
@@ -117,7 +126,7 @@ select:optional {
     font-weight: 500;
 }
 
-#add-btn {
+#add-btn, #submit-edit-btn {
     padding: 15px 25px;
     border-radius: 15px;
     background-color: #8EC5FC;
@@ -132,7 +141,7 @@ select:optional {
 
 }
 
-#add-btn:hover {
+#add-btn:hover, #submit-edit-btn:hover {
     background-color: #4d7091;
     color: #f1f1f1;
 }

@@ -94,8 +94,42 @@ function displayBugsList() {
     }
 } 
 //fonction edition
-function handleEdit() {
-
+const editOverlay = document.querySelector('#overlay')
+function handleEdit(e) {
+    
+    editOverlay.style.visibility = 'visible'
+    const editIndex = bugsList.findIndex(bug => bug.id === e.target.getAttribute('id'))
+    editOverlay.innerHTML = `
+    <form>
+        <!-- <label for="name">Name:</label> -->
+        <input type="text" id="name" value="${bugsList[editIndex].name}" required>
+        <input type="text" name="description" id="description" value='${bugsList[editIndex].description}' required></input>
+        <select name="environement" id="environement" placeholder="Environement">
+            <option value="frontend" ${bugsList[editIndex].environement === 'frontend' ? 'selected' : ''}>Frontend</option>
+            <option value="backend" ${bugsList[editIndex].environement === 'backend' ? 'selected' : ''}>Backend</option>
+        </select>
+        <select name="priority" id="priority" value='${bugsList[editIndex].priority}' >
+            <option value="">Priority:</option>
+            <option value="1" ${bugsList[editIndex].priority === '1' ? 'selected' : ''}>1</option>
+            <option value="2" ${bugsList[editIndex].priority === '2' ? 'selected' : ''}>2</option>
+            <option value="3" ${bugsList[editIndex].priority === '3' ? 'selected' : ''}>3</option>
+            <option value="4" ${bugsList[editIndex].priority === '4' ? 'selected' : ''}>4</option>
+            <option value="5" ${bugsList[editIndex].priority === '5' ? 'selected' : ''}>5</option>
+        </select>
+        <button id="submit-edit-btn">EDIT BUG</button>
+    </form>
+    `
+    const editBtn = document.querySelector('#overlay form')
+    editBtn.addEventListener('submit', (e) => {
+        e.preventDefault()
+        bugsList[editIndex].name = e.target[0].value
+        bugsList[editIndex].description = e.target[1].value
+        bugsList[editIndex].environement = e.target[2].value
+        bugsList[editIndex].priority = e.target[3].value
+        editOverlay.style.visibility = 'hidden'
+        displayBugsList()
+    })
+    
 }
 //fontion archivage
 function handleArchive(e) {
