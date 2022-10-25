@@ -58,7 +58,7 @@ menu .sort-btn:not(:last-child) {
     border-right: 0.5px solid #000
 }
 
-.display-result, .add-section {
+.display-result, .add-section, .display-archives {
     
     width: 90%;
     /* padding: 15px 0px; */
@@ -126,16 +126,20 @@ select:optional {
     color: #f1f1f1;
 }
 
-#rows {
+#rows, #rows-archives {
     display: flex;
     flex-direction: column;
     width: 100%;
 }
 
+#rows-archives {
+    opacity: 0.5;
+}
+
 .row {
     height: 60px;
     display: grid;
-    grid-template-columns: 0.5fr 0.5fr 1fr 2fr 0.5fr 0.5fr;
+    grid-template-columns: 0.5fr 0.5fr 1fr 2fr 0.5fr 0.25fr 0.25fr;
     /* height: 50px; */
     font-size: large;
     width: 100;
@@ -158,16 +162,21 @@ select:optional {
     text-align: center;
 }
 
-.row p:not(:last-child) {
+.row p:not(:last-child):not(:nth-child(6)) {
     border-right: 0.5px solid #000
 }
 
+
+.btn-crud-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-size: 0.8rem;
+    cursor: pointer;
+}
+
 .delete-bug {
-    position: absolute;
-    top: 45%;
-    transform: translateY(-50%);
-    right: 1%;
-    color: #4d7091;
     font-weight: bolder;
     font-size: larger;
     user-select: none;
