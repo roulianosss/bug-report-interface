@@ -9,6 +9,17 @@ body {
     font-family: roboto, sans-serif;
 }
 
+#overlay {
+    display: none;
+    overflow: hidden;
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.578);
+}
+
 h1 {
     text-align: center;
     margin: 25px auto;

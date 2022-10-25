@@ -52,9 +52,9 @@ function displayBugsList() {
             <p>${bug.environement}</p>
             <p>${bug.priority}</p>
             <div class="btn-crud-container">
-                <div class='edit-bug' id=${bug.id}>✏️</div>
-                <div class='archive-bug' id=${bug.id}>📁</div>
-                <div class='delete-bug' id=${bug.id}>❌</div>
+                <div class='edit-bug' id=${bug.id} title='edit' alt='edit'>✏️</div>
+                <div class='archive-bug' id=${bug.id} title='archive' alt='archive'>📁</div>
+                <div class='delete-bug' id=${bug.id} title='delete' alt='delete'>❌</div>
             
             </div>
         </div>
@@ -79,19 +79,18 @@ function displayBugsList() {
             <p>${bug.environement}</p>
             <p>${bug.priority}</p>
             <div class="btn-crud-container">
-                <div class='edit-bug' id=${bug.id}>✏️</div>
-                <div class='archive-bug' id=${bug.id}>📁</div>
-                <div class='delete-bug' id=${bug.id}>❌</div>
+                <div class='unarchive-bug' id=${bug.id} alt='Unarchive'>📁</div>
+                <div class='delete-bug' id=${bug.id} alt='delete'>❌</div>
             
             </div>
         </div>
         `
         // const allEditBtn = document.querySelectorAll('.edit-bug')
         // allEditBtn.forEach(btn => btn.addEventListener('click', handleEdit))
-        // const allArchiveBtn = document.querySelectorAll('.archive-bug')
-        // allArchiveBtn.forEach(btn => btn.addEventListener('click', handleArchive))
-        // const allRemoveBtn = document.querySelectorAll('.delete-bug')
-        // allRemoveBtn.forEach(btn => btn.addEventListener('click', handleRemove))
+        const allArchiveBtn = document.querySelectorAll('.unarchive-bug')
+        allArchiveBtn.forEach(btn => btn.addEventListener('click', handleUnarchive))
+        const allRemoveBtn = document.querySelectorAll('.delete-bug')
+        allRemoveBtn.forEach(btn => btn.addEventListener('click', handleRemoveArchive))
     }
 } 
 //fonction edition
@@ -106,6 +105,14 @@ function handleArchive(e) {
     displayBugsList()
 }
 
+//function unarchive
+function handleUnarchive(e) {
+    const archiveIndex = archivedList.findIndex(bug => bug.id === e.target.getAttribute('id'))
+    bugsList.push(archivedList[archiveIndex])
+    archivedList.splice(archiveIndex, 1)
+    displayBugsList()
+}
+
 
 //fonction de gestion de la suppression
 function handleRemove(e) {
@@ -113,6 +120,13 @@ function handleRemove(e) {
     bugsList.splice(removeIndex, 1)
     displayBugsList()
 }
+//fonction de gestion de supression des archives
+function handleRemoveArchive(e) {
+    const removeIndex = archivedList.findIndex(bug => bug.id === e.target.getAttribute('id'))
+    archivedList.splice(removeIndex, 1)
+    displayBugsList()
+}
+
 //Fonction de tri
 const sortBtns = document.querySelectorAll('.sort-btn')
 sortBtns.forEach(btn => btn.addEventListener('click', (e) => sortBugs(e.target.getAttribute('data-attr'))))
