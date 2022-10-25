@@ -55,6 +55,7 @@ menu {
     margin-bottom: 10px;
     grid-template-columns: 0.5fr 0.5fr 1fr 2fr 0.5fr 0.25fr 0.25fr;
     user-select: none;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
 }
 
 menu p {
@@ -87,6 +88,7 @@ menu .sort-btn:not(:last-child) {
     align-items: center;
     background-color: rgb(250, 235, 215, 0.5);
     margin-bottom: 20px;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
 }
 
 

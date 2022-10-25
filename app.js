@@ -11,7 +11,7 @@ const bugsList = [
         "id": "d8df3408-4fab-43d1-be4b-ba47477041bb",
         "name": "Bug d affichage",
         "environement": "frontend",
-        "description": "plus d ",
+        "description": "plus d affichage",
         "priority": "3",
         "date": "25/10/2022 16:17:27"
     },
@@ -27,7 +27,7 @@ const bugsList = [
         "id": "a7104fb3-2c7d-49b6-86b4-1268ba4c6a89",
         "name": "Bug d API",
         "environement": "backend",
-        "description": "L'api retourne un erreur",
+        "description": "L api retourne un erreur",
         "priority": "4",
         "date": "25/10/2022 16:18:54"
     },
